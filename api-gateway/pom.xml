@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.bme</groupId>
     <artifactId>api-gateway</artifactId>
-    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>api-gateway</name>
+    <packaging>jar</packaging>
     <description>Master Thesis</description>
 
     <properties>

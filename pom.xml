@@ -12,6 +12,7 @@
     <artifactId>petadoption</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>petadoption</name>
+    <packaging>pom</packaging>
     <description>Master Thesis</description>
 
     <properties>
@@ -29,6 +30,12 @@
     </modules>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
