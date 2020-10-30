@@ -9,46 +9,46 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "shelter")
+@Table
 public class Shelter {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column(name = "id")
-		private Long id;
+		@Column
+		private int id;
 		
-		@Column(name = "shelter_name")
+		@Column
 		private String shelterName;
 		
-		@Column(name = "first_name")
+		@Column
 		private String firstName;
 
-		@Column(name = "last_name")
+		@Column
 		private String lastName;
 		
-		@Column(name = "address")
+		@Column
 		private String address;
 		
-		@Column(name = "description")
+		@Column
 		private String description;
 		
-		@Column(name = "phone_number")
+		@Column
 		private String phoneNumber;
 		
-		@Column(name = "email")
+		@Column
 		private String email;
 		
-		@Column(name = "postal_code")
+		@Column
 		private String postalCode;
 		
-		@Column(name = "max_size")
+		@Column
 		private int maxSize;
 		
-		@Column(name = "last_updated")
+		@Column
 		@UpdateTimestamp
 		private Date lastUpdated;
 		
-		@Column(name = "image_url")
+		@Column
 		private String imageUrl;
 		
 		

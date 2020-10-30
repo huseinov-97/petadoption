@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
+@EnableConfigServer
 public class ConfigServerApplication {
 
 		public static void main(String[] args) {
