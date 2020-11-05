@@ -1,0 +1,10 @@
+# In Bootstrap.yml we set only the absolute minimum required to use the config server.
+spring:
+  profiles:
+    active: local-dev # Local-dev is the default profile that we override in the given environment from the environment variable
+  application:
+    name: auth-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true

@@ -16,7 +16,8 @@
     <description>Master Thesis</description>
 
     <properties>
-        <java.version>11</java.version>
+        <mapstruct.version>1.4.0.Final</mapstruct.version>
+        <io.springfox.version>3.0.0</io.springfox.version>
     </properties>
 
     <modules>
@@ -28,12 +29,84 @@
         <module>shelter-service</module>
         <module>common</module>
     </modules>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Saját közös library -->
+            <dependency>
+                <groupId>hu.jlaci.adventure-capital</groupId>
+                <artifactId>common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Spring Cloud dependencia kezeles importalasa -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Az Spring Security OAuth2 verzioja -->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.4.0.RELEASE</version>
+            </dependency>
+
+            <!-- OpenAPI (Swagger 2) leírás generálás a Controllerek alapján -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-web</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-common</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+
+            <!-- Apache commons-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
         </dependency>
 
         <dependency>

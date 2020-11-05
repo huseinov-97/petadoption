@@ -1,0 +1,11 @@
+# Settings for the local-dev profile served by Config server, ALL applications receive
+
+ac:
+  auth-server-url: http://localhost:9000/oauth2
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks

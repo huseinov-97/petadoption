@@ -23,7 +23,7 @@
       <module name="common" target="11" />
       <module name="config-server" target="11" />
       <module name="pet-service" target="11" />
-      <module name="petadoption" target="11" />
+      <module name="petadoption" target="1.8" />
       <module name="shelter-service" target="11" />
     </bytecodeTargetLevel>
   </component>

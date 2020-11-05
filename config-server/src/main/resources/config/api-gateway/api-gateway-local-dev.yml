@@ -1,0 +1,15 @@
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  routes:
+    adoptation:
+      path: /adoptation/**
+      url: http://localhost:8082
+    pet:
+      path: /pet/**
+      url: http://localhost:8083
+    shelter:
+      path: /shelter/**
+      url: http://localhost:8084
+    oauth:
+      path: /oauth2/**
+      url: http://localhost:9000/oauth2

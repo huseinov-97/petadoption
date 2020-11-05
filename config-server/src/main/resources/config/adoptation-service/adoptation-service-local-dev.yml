@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:.
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+server:
+  port: 8082
+
+ac:
+  security:
+    client-secret: eb2d6d80-417c-44d0-8e4a-3b105e154258
+    client-id: adoptation-service
