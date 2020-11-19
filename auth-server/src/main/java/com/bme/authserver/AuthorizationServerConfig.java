@@ -36,7 +36,7 @@ public class AuthorizationServerConfig {
 		}
 		
 		/**
-		 * Itt most beégetjük milyen klienseink (alkalmazás komponenseink) vannak a rendszerben.
+		 * Here we are now burning what kind of clients (application components) we have in the system.
 		 * @return
 		 */
 		@Bean
@@ -69,7 +69,7 @@ public class AuthorizationServerConfig {
 				
 				// pet service
 				RegisteredClient petService = RegisteredClient.withId("d99642ac-78ca-47e1-ae13-85d8836ed5ca")
-						.clientId("investment-service")
+						.clientId("pet-service")
 						.clientSecret("16092ceb-a272-4e02-a286-abc28a3b1b97")
 						.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 						.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
@@ -77,7 +77,7 @@ public class AuthorizationServerConfig {
 				
 				// Shelter service
 				RegisteredClient shelterService = RegisteredClient.withId("8a1d5246-b465-4672-a14b-796559ff1d34")
-						.clientId("startup-service")
+						.clientId("shelter-service")
 						.clientSecret("65584896-10bc-4965-9e2f-824765977736")
 						.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 						.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)

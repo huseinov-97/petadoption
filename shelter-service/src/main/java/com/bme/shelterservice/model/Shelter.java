@@ -1,4 +1,4 @@
-package com.bme.shelterservice.dto;
+package com.bme.shelterservice.model;
 
 
 import lombok.Data;
@@ -21,7 +21,7 @@ public class Shelter {
 		private String shelterName;
 		
 		@Column
-		private String firstName;
+		private String ownerName;
 
 		@Column
 		private String lastName;

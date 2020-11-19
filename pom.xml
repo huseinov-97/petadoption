@@ -31,11 +31,10 @@
     </modules>
     <dependencyManagement>
         <dependencies>
-            <!-- Saját közös library -->
             <dependency>
-                <groupId>hu.jlaci.adventure-capital</groupId>
+                <groupId>com.bme</groupId>
                 <artifactId>common</artifactId>
-                <version>${project.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
             <!-- Spring Cloud dependencia kezeles importalasa -->

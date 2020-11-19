@@ -21,7 +21,7 @@ import java.util.Collections;
 @Configuration
 public class ApiDocsConfiguration {
 		
-		@Value("${auth-sever-url}")
+		@Value("${pa.auth-server-url}")
 		private String authServerUrl;
 		
 		private static final String CLIENT_ID = "petadoption-frontend";
@@ -46,6 +46,10 @@ public class ApiDocsConfiguration {
 						.useBasicAuthenticationWithAccessCodeGrant(true)
 						.build();
 		}
+		/**
+		 * The security scheme tells you how security works.
+		 * @return
+		 */
 		private SecurityScheme securityScheme(){
 				GrantType grantType = new AuthorizationCodeGrantBuilder()
 						.tokenEndpoint(b->b.url(authServerUrl + "/token").tokenName("oauthToken"))
@@ -54,6 +58,10 @@ public class ApiDocsConfiguration {
 						.grantTypes(Collections.singletonList(grantType))
 						.build();
 		}
+		/**
+		 * The security context tells you when to use security. Now use if there is no / public at the endpoint
+		 * @return
+		 */
 		private SecurityContext securityContext(){
 				return SecurityContext.builder()
 						.securityReferences(Collections.singletonList(new SecurityReference("spring-oauth", new AuthorizationScope[]{})))

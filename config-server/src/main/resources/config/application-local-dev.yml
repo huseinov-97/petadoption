@@ -1,6 +1,5 @@
 # Settings for the local-dev profile served by Config server, ALL applications receive
-
-ac:
+pa:
   auth-server-url: http://localhost:9000/oauth2
 
 spring:
