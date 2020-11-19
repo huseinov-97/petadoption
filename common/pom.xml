@@ -60,12 +60,12 @@
         <!-- OpenAPI (Swagger 2) leírás generálás a Controllerek alapján -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
+            <artifactId>springfox-spring-web</artifactId>
             <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
+            <artifactId>springfox-swagger-common</artifactId>
             <version>3.0.0</version>
         </dependency>
 

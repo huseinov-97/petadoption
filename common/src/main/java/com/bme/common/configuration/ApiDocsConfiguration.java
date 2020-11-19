@@ -1,4 +1,4 @@
-package com.bme.common;
+package com.bme.common.configuration;
 
 
 import org.springframework.beans.factory.annotation.Value;

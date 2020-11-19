@@ -1,4 +1,4 @@
-package com.bme.common;
+package com.bme.common.configuration;
 
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
