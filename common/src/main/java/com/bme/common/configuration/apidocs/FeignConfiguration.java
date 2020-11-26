@@ -1,4 +1,4 @@
-package com.bme.common.configuration;
+package com.bme.common.configuration.apidocs;
 
 
 import org.springframework.beans.factory.annotation.Value;

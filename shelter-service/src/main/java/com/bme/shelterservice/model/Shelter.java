@@ -6,6 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 
 @Entity
 @Data
@@ -22,9 +25,6 @@ public class Shelter {
 		
 		@Column
 		private String ownerName;
-
-		@Column
-		private String lastName;
 		
 		@Column
 		private String address;
@@ -50,6 +50,8 @@ public class Shelter {
 		
 		@Column
 		private String imageUrl;
+		
+		
 		
 		
 }

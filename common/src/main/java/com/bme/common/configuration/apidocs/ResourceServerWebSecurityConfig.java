@@ -1,4 +1,4 @@
-package com.bme.common.configuration;
+package com.bme.common.configuration.apidocs;
 
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

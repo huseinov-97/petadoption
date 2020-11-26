@@ -1,7 +1,7 @@
 package com.bme.apigateway;
 
 
-import com.bme.common.configuration.ApiDocsConfiguration;
+import com.bme.common.configuration.apidocs.ApiDocsConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

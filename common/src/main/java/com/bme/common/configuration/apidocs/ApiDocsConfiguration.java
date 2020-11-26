@@ -1,4 +1,4 @@
-package com.bme.common.configuration;
+package com.bme.common.configuration.apidocs;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +21,7 @@ import java.util.Collections;
 @Configuration
 public class ApiDocsConfiguration {
 		
-		@Value("${pa.auth-server-url}")
+		@Value("${auth-server-url}")
 		private String authServerUrl;
 		
 		private static final String CLIENT_ID = "petadoption-frontend";

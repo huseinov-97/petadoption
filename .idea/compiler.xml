@@ -17,12 +17,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="adoptation-service" target="11" />
-      <module name="api-gateway" target="11" />
-      <module name="auth-server" target="11" />
-      <module name="common" target="11" />
-      <module name="config-server" target="11" />
-      <module name="pet-service" target="11" />
+      <module name="adoptation-service" target="1.8" />
+      <module name="api-gateway" target="1.8" />
+      <module name="auth-server" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="pet-service" target="1.8" />
       <module name="petadoption" target="1.8" />
       <module name="shelter-service" target="11" />
     </bytecodeTargetLevel>

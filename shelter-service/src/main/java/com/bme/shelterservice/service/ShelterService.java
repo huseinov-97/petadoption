@@ -28,7 +28,6 @@ public class ShelterService {
 						newShelter.setAddress(entity.getAddress());
 						newShelter.setDescription(entity.getDescription());
 						newShelter.setPhoneNumber(entity.getPhoneNumber());
-						newShelter.setLastName(entity.getLastName());
 						newShelter.setPostalCode(entity.getPostalCode());
 						newShelter.setOwnerName(entity.getOwnerName());
 						newShelter.setMaxSize(entity.getMaxSize());
