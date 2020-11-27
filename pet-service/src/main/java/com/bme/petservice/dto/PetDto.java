@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 public class PetDto {
 		
 		@NotNull
-		private int id;
+		private String id;
 		
 		@NotNull
 		private String name;

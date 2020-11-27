@@ -21,7 +21,7 @@ import java.util.Collections;
 @Configuration
 public class ApiDocsConfiguration {
 		
-		@Value("${auth-server-url}")
+		@Value("${security.auth-server-url}")
 		private String authServerUrl;
 		
 		private static final String CLIENT_ID = "petadoption-frontend";
