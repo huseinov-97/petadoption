@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 @EnableFeignClients(basePackages= "com.bme")
 public class FeignConfiguration {
 		
-		@Value("${auth-sever-url}")
+		@Value("${security.auth-sever-url}")
 		private String authServerUrl;
 		
 		@Value("${security.client-id}")

@@ -1,4 +1,3 @@
-# Settings for the local-dev profile served by Config server, ALL applications receive
 security:
   auth-server-url: http://localhost:9000/oauth2
 
