@@ -8,21 +8,21 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>com.bme</groupId>
-    <artifactId>shelterservice</artifactId>
-    <name>shelterservice</name>
-
+    <artifactId>shelter-service</artifactId>
     <packaging>jar</packaging>
-    <description>Demo project for Spring Boot</description>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.bme</groupId>
             <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bme</groupId>
+            <artifactId>pet-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Every service providing a REST API should use the WEB starter -->
@@ -30,6 +30,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
 
         <!-- Spring Data JPA Starter is used for applications accessing a DB -->
         <dependency>

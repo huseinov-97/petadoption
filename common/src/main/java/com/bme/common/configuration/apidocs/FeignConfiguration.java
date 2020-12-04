@@ -25,6 +25,7 @@ public class FeignConfiguration {
 		
 		@Bean
 		public OAuth2FeignRequestInterceptor  oAuth2FeignRequestInterceptor(){
+				
 				return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(),  oauth2schemeResourceDetails());
 		}
 		@Bean

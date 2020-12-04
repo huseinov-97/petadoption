@@ -9,5 +9,5 @@ server:
   port: 8083
 
 security:
-  client-secret: eb2d6d80-417c-44d0-8e4a-3b105e154258
+  client-secret: 16092ceb-a272-4e02-a286-abc28a3b1b97
   client-id: pet-service

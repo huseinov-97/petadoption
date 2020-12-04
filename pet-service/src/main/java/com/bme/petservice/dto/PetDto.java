@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.UUID;
 
 
 @Data
@@ -35,7 +36,6 @@ public class PetDto {
 		private double weight;
 		
 		@NotNull
-		@NotEmpty
 		private String type;
 		
 }

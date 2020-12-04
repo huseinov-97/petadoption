@@ -8,7 +8,7 @@ spring:
 server:
   port: 8084
 
-ac:
-  security:
-    client-secret: eb2d6d80-417c-44d0-8e4a-3b105e154258
+
+security:
+    client-secret: 65584896-10bc-4965-9e2f-824765977736
     client-id: shelter-service

@@ -2,6 +2,8 @@ package com.bme.shelterservice.model;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -11,14 +13,14 @@ import java.util.UUID;
 
 
 @Entity
-@Data
-@Table
+@Getter
+@Setter
 public class Shelter {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		@Column
-		private int id;
+		private UUID id;
 		
 		@Column
 		private String shelterName;
@@ -50,6 +52,12 @@ public class Shelter {
 		
 		@Column
 		private String imageUrl;
+		
+		/**
+		 * ID of the pets of the shelter.
+		 */
+		@ElementCollection
+		private List<UUID> pets;
 		
 		
 		

@@ -1,10 +1,14 @@
 package com.bme.shelterservice.controller;
 
 
+import com.bme.shelterservice.dto.ShelterDTO;
+import com.bme.shelterservice.dto.ShelterPrivateDTO;
 import com.bme.shelterservice.exception.ResourceNotFoundException;
 import com.bme.shelterservice.model.Shelter;
 import com.bme.shelterservice.service.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,28 +18,27 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
+
 
 @RestController
+@RequestMapping("/shelters")
 public class ShelterController {
 		
-		@Autowired
-		ShelterService shelterService;
+		private ShelterService shelterService;
+		private ShelterMapper mapper;
 		
-		@PostMapping("shelter/")
-		
-		@GetMapping(value = "/shelters",
-					produces = {MediaType.APPLICATION_JSON_VALUE,
+		@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE,
 								MediaType.APPLICATION_XML_VALUE})
-		public ResponseEntity<List<Shelter>> getAllShelters(){
+		public ResponseEntity<Page<ShelterDTO>> readAllShelters(Pageable pageable) {
 				
-				List<Shelter> list = shelterService.getAllShelters();
-				return new ResponseEntity<List<Shelter>>(list, new HttpHeaders(), HttpStatus.OK);
+				return ResponseEntity.ok(shelterService.readAll(pageable).map(mapper::shelterPrivateDTOToDTO));
 		}
 		
-		@GetMapping(value = "/shelters/{id}",
+		@GetMapping(value = "/{id}",
 					produces = {MediaType.APPLICATION_JSON_VALUE,
 								MediaType.APPLICATION_XML_VALUE})
-		public ResponseEntity<Shelter> getShelter(@PathVariable("id") int id) throws ResourceNotFoundException {
+		public ResponseEntity<Shelter> getShelter(@PathVariable("id") UUID id) throws ResourceNotFoundException {
 				Shelter shelter = shelterService.getShelter(id);
 				return new ResponseEntity<Shelter>(shelter,new HttpHeaders(), HttpStatus.OK);
 		}
@@ -52,7 +55,7 @@ public class ShelterController {
 		@DeleteMapping(value = "shelters/delete/{id}",
 				       consumes = {MediaType.APPLICATION_JSON_VALUE,
 							       MediaType.APPLICATION_XML_VALUE})
-		public HttpStatus deleteShelter(@PathVariable("id") Integer id)
+		public HttpStatus deleteShelter(@PathVariable("id") UUID id)
 				throws ResourceNotFoundException {
 				shelterService.deleteShelterById(id);
 				return HttpStatus.FORBIDDEN;

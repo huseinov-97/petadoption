@@ -1,6 +1,7 @@
 package com.bme.shelterservice.dto;
 
 
+import com.bme.petservice.dto.PetDto;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,27 +23,23 @@ public class ShelterDTO {
 
 		@NotNull
 		@NotEmpty
-		private String name;
+		private String shelterName;
 		
-		@NotNull
-		@NotEmpty
+		
 		private String email;
 		
-		@NotNull
-		@NotEmpty
+		
 		private String phoneNumber;
 		
 		private String description;
 		
-		@NotNull
-		@NotEmpty
+		
 		private String address;
 		
-		@NotNull
-		@NotEmpty
+	
 		private String imageUrl;
 		
 		@ElementCollection
-		private List<UUID> pets;
+		private List<PetDto> pets;
 		
 }

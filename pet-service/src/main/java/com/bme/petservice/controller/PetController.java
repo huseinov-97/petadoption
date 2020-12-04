@@ -18,7 +18,7 @@ import java.util.UUID;
 
 
 @RestController
-@RequestMapping("/investor")
+@RequestMapping("/pets")
 @AllArgsConstructor
 public class PetController {
 		

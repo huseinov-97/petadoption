@@ -16,5 +16,5 @@ import java.util.UUID;
 )
 public interface PetServiceIF {
 		@GetMapping("/{id}")
-		ResponseEntity<PetDto> findOneInvestor(@PathVariable UUID id);
+		ResponseEntity<PetDto> findOnePet(@PathVariable UUID id);
 }

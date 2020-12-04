@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Pet {
 		
 		@Id
-		private UUID id;
+		private UUID id = UUID.randomUUID();
 		
 		@Column(nullable = false)
 		private String name;

@@ -1,23 +1,52 @@
 package com.bme.shelterservice.service;
 
 
+import com.bme.petservice.feignclient.PetServiceIF;
+import com.bme.shelterservice.dto.ShelterPrivateDTO;
 import com.bme.shelterservice.exception.ResourceNotFoundException;
 import com.bme.shelterservice.model.Shelter;
 import com.bme.shelterservice.repository.ShelterRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.awt.image.ShortLookupTable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.PostConstruct;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class ShelterService {
 		
-		@Autowired
-		ShelterRepo shelterRepo;
+		private ShelterRepo shelterRepo;
+		private PetServiceIF petService;
+		
+		@PostConstruct
+		public void mockData() {
+				Shelter entity = new Shelter();
+				entity.setShelterName("My mock shelter");
+				entity.setPets(Collections.singletonList(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64")));
+				shelterRepo.save(entity);
+		}
+		
+		/**
+		 * Reads all shelters and their associations. This will call to the pet service to retrieve the data.
+		 * @param pageable
+		 * @return
+		 */
+		public Page<ShelterPrivateDTO> readAll(Pageable pageable) {
+				return shelterRepo.findAll(pageable).map(entity -> {
+						ShelterPrivateDTO dto = new ShelterPrivateDTO();
+						dto.setShelterName(entity.getShelterName());
+						dto.setPets(entity.getPets().stream()
+								.map(petId -> petService.findOnePet(petId).getBody())
+								.collect(Collectors.toList()));
+						return dto;
+				});
+		}
 		
 		public Shelter createOrUpdateShelter(Shelter entity) throws ResourceNotFoundException{
 				Optional<Shelter> shelter = shelterRepo.findById(entity.getId());
@@ -43,7 +72,7 @@ public class ShelterService {
 						return entity;
 				}
 		}
-		public void deleteShelterById(Integer id) throws ResourceNotFoundException
+		public void deleteShelterById(UUID id) throws ResourceNotFoundException
 		{
 				Optional<Shelter> employee = shelterRepo.findById(id);
 				
@@ -55,14 +84,7 @@ public class ShelterService {
 				}
 		}
 		
-		public List<Shelter> getAllShelters() {
-				
-				List<Shelter> shelters = new ArrayList<Shelter>();
-				shelterRepo.findAll().forEach(shelter -> shelters.add(shelter));
-				return shelters;
-				
-		}
-		public Shelter getShelter(int id){
+		public Shelter getShelter(UUID id){
 				return shelterRepo.findById(id).get();
 		}
 }

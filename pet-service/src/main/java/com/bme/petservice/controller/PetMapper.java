@@ -9,7 +9,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface PetMapper {
-	@Mapping(target = "id", expression = "java(entity.getId().toString())")
-	PetDto petToPublicDTO(Pet entity);
-		
+		@Mapping(target = "id", expression = "java(entity.getId().toString())")
+		PetDto petToPublicDTO(Pet entity);
 }

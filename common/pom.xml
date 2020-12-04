@@ -9,7 +9,6 @@
         <version>1.0.0</version>
     </parent>
     <artifactId>common</artifactId>
-    <name>common</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -18,14 +17,22 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -36,18 +43,12 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
-        <!-- OpenAPI (Swagger 2) leírás generálás a Controllerek alapján -->
+        <!-- API description -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-spring-web</artifactId>
@@ -57,4 +58,5 @@
             <artifactId>springfox-swagger-common</artifactId>
         </dependency>
     </dependencies>
+
 </project>

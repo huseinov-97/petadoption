@@ -14,6 +14,7 @@
         <dependency>
             <groupId>com.bme</groupId>
             <artifactId>common</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Every service providing a REST API should use the WEB starter -->
@@ -56,6 +57,10 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
