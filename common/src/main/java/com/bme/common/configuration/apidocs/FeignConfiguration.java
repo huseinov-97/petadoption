@@ -10,6 +10,12 @@ import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 
 
+
+/**
+ * In applications, where we want to call another service services we should import that service's api module.
+ * This configuration will mae feign find the declared feign clients in those packeges too.
+ */
+
 @Configuration
 @EnableFeignClients(basePackages= "com.bme")
 public class FeignConfiguration {

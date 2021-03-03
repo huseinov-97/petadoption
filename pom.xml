@@ -13,8 +13,9 @@
     <packaging>pom</packaging>
 
     <properties>
-        <mapstruct.version>1.4.0.Final</mapstruct.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
         <io.springfox.version>3.0.0</io.springfox.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     </properties>
 
     <modules>
@@ -34,22 +35,35 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- Spring Cloud dependencia kezeles importalasa -->
+            <!-- Spring Cloud dependency managed import -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Az Spring Security OAuth2 verzioja -->
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+                <version>2.2.7.RELEASE</version>
+            </dependency>
+
+            <!-- Az Spring Security OAuth2 versions -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>2.2.4.RELEASE</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
-                <version>2.4.0.RELEASE</version>
+                <version>2.5.0.RELEASE</version>
             </dependency>
 
-            <!-- OpenAPI (Swagger 2) leírás generálás a Controllerek alapján -->
+            <!-- OpenAPI (Swagger 2) description generation based on Controllers -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
@@ -83,22 +97,26 @@
 
 
     <dependencies>
+        <!-- Annotation based on the code general  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- Annotation based on validation -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
 
+        <!-- Annotation based on folders -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
 
+        <!-- H2 database driver -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -124,6 +142,11 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${lombok-mapstruct-binding.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

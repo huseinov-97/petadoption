@@ -13,17 +13,17 @@
 
 
     <dependencies>
-
+        <!-- Every service providing a REST API should use the WEB starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Required to run this application as the config server -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

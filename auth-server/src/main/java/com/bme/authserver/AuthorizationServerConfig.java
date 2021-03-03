@@ -1,31 +1,70 @@
 package com.bme.authserver;
 
 
+import com.bme.authserver.jwt.Jwks;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import io.swagger.models.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.keys.StaticKeyGeneratingKeyManager;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.oauth2.server.authorization.web.OAuth2TokenEndpointFilter;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @EnableWebSecurity
 public class AuthorizationServerConfig {
 		
+		/**
+		 * TODO: workao
+		 * @param http
+		 * @return
+		 * @throws Exception
+		 */
+		
 		@Bean
-		public WebSecurityConfigurer<WebSecurity> defaultOAuth2AuthorizationServerSecurity() {
-				return new AuthorizationServerWebSecurityConfiguration();
+		public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
+				OAuth2AuthorizationServerConfigurer<HttpSecurity> authorizationServerConfigurer = new OAuth2AuthorizationServerConfigurer();
+				
+				List<RequestMatcher> requestMatchers = new ArrayList<>();
+				requestMatchers.add(authorizationServerConfigurer.getEndpointsMatcher());
+				requestMatchers.add(new AntPathRequestMatcher(OAuth2TokenEndpointFilter.DEFAULT_TOKEN_ENDPOINT_URI, HttpMethod.OPTIONS.name()));
+				
+				http.cors().and()
+						.requestMatcher(new OrRequestMatcher(requestMatchers))
+						.authorizeRequests((authorizeRequests) -> {
+								((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)authorizeRequests.anyRequest()).authenticated();
+						}).csrf((csrf) -> {
+						csrf.ignoringRequestMatchers(new RequestMatcher[]{tokenEndpointMatcher()});
+				}).apply(authorizationServerConfigurer);
+				
+				return http.build();
+		}
+		
+		private static RequestMatcher tokenEndpointMatcher() {
+				return new AntPathRequestMatcher(
+						OAuth2TokenEndpointFilter.DEFAULT_TOKEN_ENDPOINT_URI,
+						HttpMethod.POST.name());
 		}
 		
 		@Bean
@@ -95,18 +134,11 @@ public class AuthorizationServerConfig {
 		}
 		
 		@Bean
-		public StaticKeyGeneratingKeyManager keyManager() {
-				return new StaticKeyGeneratingKeyManager();
+		public JWKSource<SecurityContext> jwkSource() {
+				RSAKey rsaKey = Jwks.generateRsa();
+				JWKSet jwkSet = new JWKSet(rsaKey);
+				return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
 		}
 		
-		@Bean
-		public UserDetailsService users() {
-				UserDetails user = User.withDefaultPasswordEncoder()
-						.username("user")
-						.password("password")
-						.roles("USER")
-						.build();
-				return new InMemoryUserDetailsManager(user);
-		}
 		
 }
