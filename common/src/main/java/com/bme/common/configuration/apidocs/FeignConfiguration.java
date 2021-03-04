@@ -20,13 +20,13 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 @EnableFeignClients(basePackages= "com.bme")
 public class FeignConfiguration {
 		
-		@Value("${security.auth-sever-url}")
+		@Value("${petadoption.auth-server-url}")
 		private String authServerUrl;
 		
-		@Value("${security.client-id}")
+		@Value("${petadoption.client-id}")
 		private String clientId;
 		
-		@Value("${security.client-secret}")
+		@Value("${petadoption.client-secret}")
 		private String clientSecret;
 		
 		@Bean

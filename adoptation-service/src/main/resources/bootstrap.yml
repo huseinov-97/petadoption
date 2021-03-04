@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: local-dev # local-dev is the default profile for local development, this will be overriden in prod
+  application:
+    name: adoptation-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true

@@ -21,7 +21,7 @@ import java.util.Collections;
 @Configuration
 public class ApiDocsConfiguration {
 		
-		@Value("${security.auth-server-url}")
+		@Value("${petadoption.auth-server-url}")
 		private String authServerUrl;
 		
 		private static final String CLIENT_ID = "petadoption-frontend";
@@ -64,8 +64,10 @@ public class ApiDocsConfiguration {
 		 */
 		private SecurityContext securityContext(){
 				return SecurityContext.builder()
-						.securityReferences(Collections.singletonList(new SecurityReference("spring-oauth", new AuthorizationScope[]{})))
-						.operationSelector(s->!s.requestMappingPattern().matches(".*/public.*"))
+						.securityReferences(Collections.singletonList(
+										new SecurityReference("spring-oauth",
+										new AuthorizationScope[]{})))
+						.operationSelector(s -> !s.requestMappingPattern().matches(".*/public.*"))
 						.build();
 		}
 }

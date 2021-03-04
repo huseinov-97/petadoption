@@ -1,5 +1,0 @@
-# For the tests we dont use the config server, so we disable it here
-spring:
-  cloud:
-    config:
-      enabled: false

@@ -7,7 +7,7 @@ spring:
 
 server:
   port: 8083
-
-security:
-  client-secret: 16092ceb-a272-4e02-a286-abc28a3b1b97
-  client-id: pet-service
+petadoption:
+  security:
+    client-secret: 16092ceb-a272-4e02-a286-abc28a3b1b97
+    client-id: pet-service

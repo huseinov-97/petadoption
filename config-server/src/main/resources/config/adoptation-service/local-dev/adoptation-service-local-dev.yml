@@ -8,7 +8,7 @@ spring:
 
 server:
   port: 8082
-
-security:
+petadoption:
+  security:
     client-secret: eb2d6d80-417c-44d0-8e4a-3b105e154258
     client-id: adoptation-service
