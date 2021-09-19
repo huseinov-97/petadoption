@@ -15,8 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Slf4j
 @EnableSwagger2
 public class AuthserverApplication {
-
-		public static void main(String[] args) {
-				SpringApplication.run(AuthserverApplication.class, args);
-		}
+    public static void main(String[] args) {
+        SpringApplication.run(AuthserverApplication.class, args);
+    }
 }

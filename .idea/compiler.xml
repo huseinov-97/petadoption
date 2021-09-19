@@ -17,14 +17,17 @@
         <module name="common" />
         <module name="adoptation-service" />
         <module name="pet-service" />
-        <module name="auth-server" />
         <module name="shelter-service" />
         <module name="api-gateway" />
+        <module name="auth-api" />
+        <module name="auth-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="adoptation-service" target="11" />
       <module name="api-gateway" target="11" />
+      <module name="auth-api" target="11" />
+      <module name="auth-core" target="11" />
       <module name="auth-server" target="11" />
       <module name="common" target="11" />
       <module name="config-server" target="11" />
@@ -37,7 +40,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="adoptation-service" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
-      <module name="auth-server" options="-parameters" />
+      <module name="auth-api" options="-parameters" />
+      <module name="auth-core" options="-parameters" />
+      <module name="auth-server" options="" />
       <module name="common" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="pet-service" options="-parameters" />

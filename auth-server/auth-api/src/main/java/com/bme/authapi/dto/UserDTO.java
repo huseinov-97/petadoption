@@ -1,4 +1,4 @@
-package com.bme.authserver.dto;
+package com.bme.authapi.dto;
 
 
 import com.sun.istack.NotNull;

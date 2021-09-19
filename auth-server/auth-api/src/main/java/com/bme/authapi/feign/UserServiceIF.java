@@ -1,7 +1,7 @@
-package com.bme.authserver.feign;
+package com.bme.authapi.feign;
 
 
-import com.bme.authserver.dto.UserDTO;
+import com.bme.authapi.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
