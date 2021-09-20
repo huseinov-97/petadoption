@@ -28,18 +28,4 @@ public class FeignConfiguration {
 		
 		@Value("${petadoption.security.client-secret}")
 		private String clientSecret;
-		
-		@Bean
-		public OAuth2FeignRequestInterceptor  oAuth2FeignRequestInterceptor(){
-				
-				return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(),  oauth2schemeResourceDetails());
-		}
-		@Bean
-		public ClientCredentialsResourceDetails oauth2schemeResourceDetails() {
-				ClientCredentialsResourceDetails details = new ClientCredentialsResourceDetails();
-				details.setClientId(clientId);
-				details.setClientSecret(clientSecret);
-				details.setAccessTokenUri(authServerUrl + "/token");
-				return details;
-		}
 }

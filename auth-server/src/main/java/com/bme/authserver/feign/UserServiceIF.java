@@ -1,13 +1,13 @@
 package com.bme.authserver.feign;
 
 
-import com.bme.authserver.dto.UserDTO;
+import com.bme.authserver.dto.UserResource;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.UUID;
+import java.util.Optional;
 
 
 @FeignClient(
@@ -16,5 +16,5 @@ import java.util.UUID;
 )
 public interface UserServiceIF {
 		@GetMapping("/{id}")
-		ResponseEntity<UserDTO> findOneUser(@PathVariable UUID id);
+        ResponseEntity<Optional<UserResource>> get(@PathVariable Integer id);
 }

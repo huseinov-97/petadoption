@@ -15,8 +15,8 @@
         </processorPath>
         <module name="config-server" />
         <module name="common" />
-        <module name="adoptation-service" />
         <module name="pet-service" />
+        <module name="adoptation-service" />
         <module name="auth-server" />
         <module name="shelter-service" />
         <module name="api-gateway" />

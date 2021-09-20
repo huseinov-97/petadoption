@@ -1,4 +1,12 @@
 
+spring:
+  datasource:
+    url:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+
 
 server:
   port: 9000
