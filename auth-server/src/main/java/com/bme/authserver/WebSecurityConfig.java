@@ -11,28 +11,28 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-@EnableWebSecurity
-public class WebSecurityConfig {
-		
-		@Bean
-		SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-				http
-						.authorizeRequests(authorizeRequests ->
-								authorizeRequests.anyRequest().authenticated()
-						)
-						.formLogin(withDefaults());
-				return http.build();
-		}
-		
-		@Bean
-		public UserDetailsService users() {
-				UserDetails user = User.withDefaultPasswordEncoder()
-						.username("user")
-						.password("password")
-						.roles("USER")
-						.build();
-				return new InMemoryUserDetailsManager(user);
-		}
-		
-
-}
+//@EnableWebSecurity
+//public class WebSecurityConfig {
+//
+//	@Bean
+//	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+//		http
+//				.authorizeRequests(authorizeRequests ->
+//						authorizeRequests.anyRequest().authenticated()
+//				)
+//				.formLogin(withDefaults());
+//		return http.build();
+//	}
+//
+//	@Bean
+//	public UserDetailsService users() {
+//		UserDetails user = User.withDefaultPasswordEncoder()
+//				.username("user")
+//				.password("password")
+//				.roles("USER")
+//				.build();
+//		return new InMemoryUserDetailsManager(user);
+//	}
+//
+//
+//}
