@@ -1,49 +1,64 @@
 package com.bme.authserver.service;
 
 
-import com.bme.authserver.entity.Role;
+import com.bme.authserver.dto.AddUserResource;
+import com.bme.authserver.dto.UpdateUserResource;
+import com.bme.authserver.dto.UserResource;
 import com.bme.authserver.entity.User;
+import com.bme.authserver.exception.UserNotFoundException;
+import com.bme.authserver.mapper.UserMapper;
 import com.bme.authserver.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.Collections;
+import java.awt.print.Pageable;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
+@Service
+@RequiredArgsConstructor
 public class UserService implements UserDetailsService {
-		
-		@Autowired
-		private UserRepository userRepository;
-		
-		private Role role;
-		
-		@PostConstruct
-		public void mock() {
-				
-				User userEntity = new User();
-				userEntity.setFirstName("Mahir");
-				userEntity.setLastName("Huseynov");
-				userEntity.setId(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64"));
-				userEntity.setEnabled(true);
-				userEntity.setRoles(Collections.singletonList(role.ROLE_USER));
-				userRepository.save(userEntity);
-		}
-		
-		
-		
-		@Override
-		public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-				Optional<User> user = userRepository.findByUsername(s);
-				
-				if (user.isPresent()){
-						return (UserDetails) user.get();
-				}else{
-						throw new UsernameNotFoundException(String.format("Username[%s] not found"));
-				}
-		}
+    private final UserRepository repository;
+    private final UserMapper mapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        Optional<User> user = repository.findByUserName(s);
+
+        if (user.isPresent()) {
+            return (UserDetails) user.get();
+        } else {
+            throw new UsernameNotFoundException(String.format("Username[%s] not found"));
+        }
+    }
+
+    public List<User> list() {
+        return repository.findAll();
+    }
+
+    public Optional<User> get(Integer id) {
+        return repository.findById(id);
+    }
+
+    public UserResource create(AddUserResource addUserResource) {
+        User user = mapper.from(addUserResource);
+        user = repository.save(user);
+        return mapper.to(user);
+    }
+
+    public UserResource update(Integer id, UpdateUserResource updateUserResource) {
+        User user = repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        user.setFirstName(updateUserResource.getFirstName());
+        user.setLastName(updateUserResource.getLastName());
+        user.setEmail(updateUserResource.getEmail());
+        user.setPassword(updateUserResource.getPassword());
+
+        User updatedUser = repository.save(user);
+        return mapper.to(updatedUser);
+    }
 }
