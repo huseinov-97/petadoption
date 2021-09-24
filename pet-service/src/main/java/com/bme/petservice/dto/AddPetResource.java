@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PetRegistrationDTO {
-		
-		private String name;
-		private int age;
-		private String type;
-		private String gender;
-		
+public class AddPetResource {
+    private String name;
+    private int age;
+    private String type;
+    private String gender;
 }

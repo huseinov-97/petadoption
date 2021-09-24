@@ -36,7 +36,7 @@ public class AdoptationService {
 				return repository.findAll(pageable).map(entity -> {
 						AdoptationDTO dto = new AdoptationDTO();
 						dto.setPets(entity.getPets().stream()
-						.map(petId -> petService.findOnePet(petId).getBody()).collect(Collectors.toList()));
+						.map(petId -> petService.get(petId).getBody()).collect(Collectors.toList()));
 						return dto;
 				});
 		}

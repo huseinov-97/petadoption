@@ -57,7 +57,7 @@ public class Shelter {
 		 * ID of the pets of the shelter.
 		 */
 		@ElementCollection
-		private List<UUID> pets;
+		private List<Integer> pets;
 		
 		
 		

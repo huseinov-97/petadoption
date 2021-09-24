@@ -119,8 +119,6 @@ public class AuthorizationServerConfig {
 						.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 						.build();
 				
-				
-				
 				return new InMemoryRegisteredClientRepository(
 						frontendClient,
 						apiGateway,
@@ -136,6 +134,4 @@ public class AuthorizationServerConfig {
 				JWKSet jwkSet = new JWKSet(rsaKey);
 				return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
 		}
-		
-		
 }

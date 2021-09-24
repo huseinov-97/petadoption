@@ -42,7 +42,7 @@ public class ShelterService {
 						ShelterPrivateDTO dto = new ShelterPrivateDTO();
 						dto.setShelterName(entity.getShelterName());
 						dto.setPets(entity.getPets().stream()
-								.map(petId -> petService.findOnePet(petId).getBody())
+								.map(petId -> petService.get(petId).getBody())
 								.collect(Collectors.toList()));
 						return dto;
 				});

@@ -14,14 +14,16 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserResource {
     private String id;
-    private String name;
+    private String userName;
+    private String firstName;
     private String lastName;
     private String email;
 
     public static UserResource toUserResource(User user) {
         return UserResource.builder()
+                .userName(user.getUserName())
                 .email(user.getEmail())
-                .name(user.getFirstName())
+                .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .build();
     }
