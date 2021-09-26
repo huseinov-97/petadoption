@@ -25,40 +25,40 @@ import java.util.UUID;
 @RequestMapping("/shelters")
 public class ShelterController {
 		
-		private ShelterService shelterService;
-		private ShelterMapper mapper;
-		
-		@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE,
-								MediaType.APPLICATION_XML_VALUE})
-		public ResponseEntity<Page<ShelterDTO>> readAllShelters(Pageable pageable) {
-				
-				return ResponseEntity.ok(shelterService.readAll(pageable).map(mapper::shelterPrivateDTOToDTO));
-		}
-		
-		@GetMapping(value = "/{id}",
-					produces = {MediaType.APPLICATION_JSON_VALUE,
-								MediaType.APPLICATION_XML_VALUE})
-		public ResponseEntity<Shelter> getShelter(@PathVariable("id") UUID id) throws ResourceNotFoundException {
-				Shelter shelter = shelterService.getShelter(id);
-				return new ResponseEntity<Shelter>(shelter,new HttpHeaders(), HttpStatus.OK);
-		}
-		
-		@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE,
-								 MediaType.APPLICATION_XML_VALUE},
-					 produces = {MediaType.APPLICATION_JSON_VALUE,
-							     MediaType.APPLICATION_XML_VALUE})
-		public ResponseEntity<Shelter> createOrUpdateShelter(Shelter shelter) throws ResourceNotFoundException{
-				Shelter entity = shelterService.createOrUpdateShelter(shelter);
-				return new ResponseEntity<Shelter>(entity, new HttpHeaders(), HttpStatus.OK);
-		}
-		
-		@DeleteMapping(value = "shelters/delete/{id}",
-				       consumes = {MediaType.APPLICATION_JSON_VALUE,
-							       MediaType.APPLICATION_XML_VALUE})
-		public HttpStatus deleteShelter(@PathVariable("id") UUID id)
-				throws ResourceNotFoundException {
-				shelterService.deleteShelterById(id);
-				return HttpStatus.FORBIDDEN;
-		}
+//		private ShelterService shelterService;
+//		private ShelterMapper mapper;
+//
+//		@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE,
+//								MediaType.APPLICATION_XML_VALUE})
+//		public ResponseEntity<Page<ShelterDTO>> readAllShelters(Pageable pageable) {
+//
+//				return ResponseEntity.ok(shelterService.readAll(pageable).map(mapper::shelterPrivateDTOToDTO));
+//		}
+//
+//		@GetMapping(value = "/{id}",
+//					produces = {MediaType.APPLICATION_JSON_VALUE,
+//								MediaType.APPLICATION_XML_VALUE})
+//		public ResponseEntity<Shelter> getShelter(@PathVariable("id") UUID id) throws ResourceNotFoundException {
+//				Shelter shelter = shelterService.getShelter(id);
+//				return new ResponseEntity<Shelter>(shelter,new HttpHeaders(), HttpStatus.OK);
+//		}
+//
+//		@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE,
+//								 MediaType.APPLICATION_XML_VALUE},
+//					 produces = {MediaType.APPLICATION_JSON_VALUE,
+//							     MediaType.APPLICATION_XML_VALUE})
+//		public ResponseEntity<Shelter> createOrUpdateShelter(Shelter shelter) throws ResourceNotFoundException{
+//				Shelter entity = shelterService.createOrUpdateShelter(shelter);
+//				return new ResponseEntity<Shelter>(entity, new HttpHeaders(), HttpStatus.OK);
+//		}
+//
+//		@DeleteMapping(value = "shelters/delete/{id}",
+//				       consumes = {MediaType.APPLICATION_JSON_VALUE,
+//							       MediaType.APPLICATION_XML_VALUE})
+//		public HttpStatus deleteShelter(@PathVariable("id") UUID id)
+//				throws ResourceNotFoundException {
+//				shelterService.deleteShelterById(id);
+//				return HttpStatus.FORBIDDEN;
+//		}
 		
 }
