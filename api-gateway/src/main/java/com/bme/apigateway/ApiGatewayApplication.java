@@ -12,12 +12,8 @@ import org.springframework.context.annotation.Import;
 @EnableZuulProxy
 @SpringBootApplication
 @Import(ApiDocsConfiguration.class)
-@Slf4j
 public class ApiGatewayApplication {
-
 		public static void main(String[] args) {
 				SpringApplication.run(ApiGatewayApplication.class, args);
-				log.info("API Gateway has started successfully");
 		}
-
 }

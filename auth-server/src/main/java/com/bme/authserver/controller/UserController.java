@@ -8,7 +8,6 @@ import com.bme.authserver.mapper.UserMapper;
 import com.bme.authserver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +31,7 @@ public class UserController implements UserServiceIF {
     private final UserService service;
     private final UserMapper mapper;
 
-   // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    // @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<UserResource>> list() {
 

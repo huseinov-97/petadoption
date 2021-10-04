@@ -9,13 +9,12 @@ import com.bme.authserver.exception.UserNotFoundException;
 import com.bme.authserver.mapper.UserMapper;
 import com.bme.authserver.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +24,21 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository repository;
     private final UserMapper mapper;
+
+    @PostConstruct
+    public void mock() {
+        User user = User.builder()
+                .id(1)
+                .firstName("Mahir")
+                .lastName("huseynov")
+                .userName("huseynov")
+                .password("test")
+                .email("mahir@gmail.com")
+                .isAdmin(false)
+                .build();
+
+        repository.save(user);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

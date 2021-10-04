@@ -7,23 +7,23 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 
 @EnableWebSecurity
-public class ResourceServerWebSecurityConfig {
+public class ResourceServerWebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
-//		@Override
-//		protected void configure(HttpSecurity http) throws Exception {
-//						 http
-//						.authorizeRequests()
-//						.antMatchers("/swagger-resources/**",
-//								"/swagger-ui/",
-//								"/webjars/springfox-swagger-ui/**",
-//								"/v2/api-docs**",
-//								"/swagger**")
-//						.permitAll()
-//						.anyRequest()
-//						.authenticated()
-//						.and()
-//						.oauth2ResourceServer()
-//						.jwt();
-//		}
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+						 http
+						.authorizeRequests()
+						.antMatchers("/swagger-resources/**",
+								"/swagger-ui/",
+								"/webjars/springfox-swagger-ui/**",
+								"/v2/api-docs**",
+								"/swagger**")
+						.permitAll()
+						.anyRequest()
+						.authenticated()
+						.and()
+						.oauth2ResourceServer()
+						.jwt();
+		}
 		
 }

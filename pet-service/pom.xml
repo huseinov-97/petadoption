@@ -7,6 +7,7 @@
         <artifactId>petadoption</artifactId>
         <version>1.0.0</version>
     </parent>
+
     <artifactId>pet-service</artifactId>
     <packaging>jar</packaging>
 
@@ -14,10 +15,7 @@
         <dependency>
             <groupId>com.bme</groupId>
             <artifactId>common</artifactId>
-            <version>${project.version}</version>
         </dependency>
-
-
 
         <!-- Every service providing a REST API should use the WEB starter -->
         <dependency>
