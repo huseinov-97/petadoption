@@ -21,9 +21,16 @@ public class WebSecurityConfig{
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests.anyRequest().authenticated()
-                )
+                .authorizeRequests()
+                .antMatchers("/swagger-resources/**",
+                        "/swagger-ui/",
+                        "/webjars/springfox-swagger-ui/**",
+                        "/v2/api-docs**",
+                        "/swagger**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
                 .formLogin(withDefaults());
         return http.build();
     }

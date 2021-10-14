@@ -11,8 +11,8 @@ zuul:
       path: /shelter/**
       url: http://localhost:8084
     oauth:
-      path: /oauth2/**
-      url: http://localhost:9000/oauth2
+      path: /oauth/**
+      url: http://localhost:9000
 
 petadoption:
   security:
