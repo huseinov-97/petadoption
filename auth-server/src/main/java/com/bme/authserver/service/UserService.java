@@ -4,6 +4,7 @@ package com.bme.authserver.service;
 import com.bme.authserver.dto.AddUserResource;
 import com.bme.authserver.dto.UpdateUserResource;
 import com.bme.authserver.dto.UserResource;
+import com.bme.authserver.entity.Role;
 import com.bme.authserver.entity.User;
 import com.bme.authserver.exception.UserNotFoundException;
 import com.bme.authserver.mapper.UserMapper;
@@ -12,11 +13,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -24,6 +29,7 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository repository;
     private final UserMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void mock() {
@@ -32,7 +38,7 @@ public class UserService implements UserDetailsService {
                 .firstName("Mahir")
                 .lastName("huseynov")
                 .userName("huseynov")
-                .password("test")
+                .password(passwordEncoder.encode("test"))
                 .email("mahir@gmail.com")
                 .isAdmin(false)
                 .build();
@@ -45,9 +51,16 @@ public class UserService implements UserDetailsService {
         Optional<User> user = repository.findByUserName(s);
 
         if (user.isPresent()) {
-            return (UserDetails) user.get();
+            User petUser = user.get();
+
+            // We map our custom User object to the User defined by spring security
+            return org.springframework.security.core.userdetails.User
+                    .withUsername(petUser.getUserName())
+                    .password(petUser.getPassword())
+                    .roles(petUser.getRoles().stream().map(Role::getName).collect(Collectors.toList()).toArray(new String[] {}))
+                    .build();
         } else {
-            throw new UsernameNotFoundException(String.format("Username[%s] not found"));
+            throw new UsernameNotFoundException(String.format("Username[%s] not found", s));
         }
     }
 

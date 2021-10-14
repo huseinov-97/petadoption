@@ -15,8 +15,8 @@
         </processorPath>
         <module name="config-server" />
         <module name="common" />
-        <module name="pet-service" />
         <module name="adoptation-service" />
+        <module name="pet-service" />
         <module name="auth-server" />
         <module name="shelter-service" />
         <module name="api-gateway" />
@@ -41,7 +41,7 @@
       <module name="common" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="pet-service" options="-parameters" />
-      <module name="petadoption" options="" />
+      <module name="petadoption" options="-parameters" />
       <module name="shelter-service" options="-parameters" />
     </option>
   </component>

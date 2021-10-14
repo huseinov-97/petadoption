@@ -17,42 +17,21 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 public class WebSecurityConfig{
-//
-//	@Bean
-//	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-//		http
-//				.authorizeRequests(authorizeRequests ->
-//						authorizeRequests.anyRequest().authenticated()
-//				)
-//				.formLogin(withDefaults());
-//		return http.build();
-//	}
-//
-//	@Bean
-//	public UserDetailsService users() {
-//		UserDetails user = User.withDefaultPasswordEncoder()
-//				.username("user")
-//				.password("password")
-//				.roles("USER")
-//				.build();
-//		return new InMemoryUserDetailsManager(user);
-//	}
-//
-//	private static final String ENCODED_PASSWORD = "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2";
 
+    @Bean
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests(authorizeRequests ->
+                        authorizeRequests.anyRequest().authenticated()
+                )
+                .formLogin(withDefaults());
+        return http.build();
+    }
 
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//				.passwordEncoder(passwordEncoder())
-//				.withUser("user").password(ENCODED_PASSWORD).roles("USER");
-//	}
-//
-//
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }
-//
+
