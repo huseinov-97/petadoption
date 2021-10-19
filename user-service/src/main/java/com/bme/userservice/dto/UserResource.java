@@ -1,7 +1,7 @@
-package com.bme.authserver.dto;
+package com.bme.userservice.dto;
 
 
-import com.bme.authserver.entity.User;
+import com.bme.userservice.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

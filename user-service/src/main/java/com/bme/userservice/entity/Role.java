@@ -1,4 +1,4 @@
-package com.bme.authserver.entity;
+package com.bme.userservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -26,6 +26,7 @@
         <module>pet-service</module>
         <module>shelter-service</module>
         <module>common</module>
+        <module>user-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>

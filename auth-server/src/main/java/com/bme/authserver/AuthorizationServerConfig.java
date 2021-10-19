@@ -119,7 +119,14 @@ public class AuthorizationServerConfig {
 						.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 						.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 						.build();
-				
+
+			// Shelter service
+			RegisteredClient userService = RegisteredClient.withId("02032352-50dd-4c5f-92c8-2b53fb2b764b")
+					.clientId("user-service")
+					.clientSecret("f3c2557d-ab7c-4b9f-a287-9e5b9b5eb599")
+					.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
+					.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+					.build();
 				
 				
 				return new InMemoryRegisteredClientRepository(
@@ -127,7 +134,8 @@ public class AuthorizationServerConfig {
 						apiGateway,
 						adoptationService,
 						petService,
-						shelterService
+						shelterService,
+						userService
 				);
 		}
 		

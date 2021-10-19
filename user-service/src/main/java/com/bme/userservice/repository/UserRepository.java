@@ -1,7 +1,7 @@
-package com.bme.authserver.repository;
+package com.bme.userservice.repository;
 
 
-import com.bme.authserver.entity.User;
+import com.bme.userservice.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

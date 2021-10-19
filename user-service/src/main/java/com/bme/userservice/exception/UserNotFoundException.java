@@ -1,4 +1,4 @@
-package com.bme.authserver.exception;
+package com.bme.userservice.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(Integer id) {

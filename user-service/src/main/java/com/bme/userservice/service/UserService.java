@@ -1,14 +1,14 @@
-package com.bme.authserver.service;
+package com.bme.userservice.service;
 
 
-import com.bme.authserver.dto.AddUserResource;
-import com.bme.authserver.dto.UpdateUserResource;
-import com.bme.authserver.dto.UserResource;
-import com.bme.authserver.entity.Role;
-import com.bme.authserver.entity.User;
-import com.bme.authserver.exception.UserNotFoundException;
-import com.bme.authserver.mapper.UserMapper;
-import com.bme.authserver.repository.UserRepository;
+import com.bme.userservice.dto.AddUserResource;
+import com.bme.userservice.dto.UpdateUserResource;
+import com.bme.userservice.dto.UserResource;
+import com.bme.userservice.entity.Role;
+import com.bme.userservice.entity.User;
+import com.bme.userservice.exception.UserNotFoundException;
+import com.bme.userservice.mapper.UserMapper;
+import com.bme.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,8 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -57,7 +55,7 @@ public class UserService implements UserDetailsService {
             return org.springframework.security.core.userdetails.User
                     .withUsername(petUser.getUserName())
                     .password(petUser.getPassword())
-                    .roles(petUser.getRoles().stream().map(Role::getName).collect(Collectors.toList()).toArray(new String[] {}))
+                    .roles(petUser.getRoles().stream().map(Role::getName).collect(Collectors.toList()).toArray(new String[]{}))
                     .build();
         } else {
             throw new UsernameNotFoundException(String.format("Username[%s] not found", s));

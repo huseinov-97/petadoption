@@ -1,11 +1,11 @@
-package com.bme.authserver.controller;
+package com.bme.userservice.controller;
 
-import com.bme.authserver.dto.AddUserResource;
-import com.bme.authserver.dto.UpdateUserResource;
-import com.bme.authserver.dto.UserResource;
-import com.bme.authserver.feign.UserServiceIF;
-import com.bme.authserver.mapper.UserMapper;
-import com.bme.authserver.service.UserService;
+import com.bme.userservice.dto.AddUserResource;
+import com.bme.userservice.dto.UpdateUserResource;
+import com.bme.userservice.dto.UserResource;
+import com.bme.userservice.feign.UserServiceIF;
+import com.bme.userservice.mapper.UserMapper;
+import com.bme.userservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

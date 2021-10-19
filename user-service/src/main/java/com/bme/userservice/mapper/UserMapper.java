@@ -1,8 +1,8 @@
-package com.bme.authserver.mapper;
+package com.bme.userservice.mapper;
 
-import com.bme.authserver.dto.AddUserResource;
-import com.bme.authserver.dto.UserResource;
-import com.bme.authserver.entity.User;
+import com.bme.userservice.dto.AddUserResource;
+import com.bme.userservice.dto.UserResource;
+import com.bme.userservice.entity.User;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -17,7 +17,7 @@ public interface UserMapper {
     User from(AddUserResource addUserResource);
 
     @AfterMapping
-    default void afterFrom(@MappingTarget User user, AddUserResource addUserResource){
+    default void afterFrom(@MappingTarget User user, AddUserResource addUserResource) {
         user.setAdmin(false);
         user.setEnabled(true);
         user.setRegistrationDate(Instant.now());

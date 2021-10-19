@@ -1,4 +1,4 @@
-package com.bme.authserver.dto;
+package com.bme.userservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @FieldNameConstants
-public class UpdateUserResource {
+public class AddUserResource {
+    private String userName;
     private String firstName;
     private String lastName;
     private String password;
