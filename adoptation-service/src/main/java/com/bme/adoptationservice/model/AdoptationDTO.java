@@ -1,7 +1,8 @@
 package com.bme.adoptationservice.model;
 
 
-//import com.bme.petservice.dto.PetDto;
+import com.bme.petservice.dto.PetResource;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,15 +11,10 @@ import java.util.Date;
 import java.util.List;
 
 
-@Getter
-@Setter
+@Data
 public class AdoptationDTO {
-
-    @NotNull
-    private String id;
-
-    private boolean isAdopted;
-    private Date adoptationDate;
-
-//    private List<PetDto> pets;
+				private String id;
+		private boolean isAdopted;
+		private Date adoptationDate;
+		private List<PetResource> pets;
 }

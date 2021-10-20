@@ -145,6 +145,4 @@ public class AuthorizationServerConfig {
 				JWKSet jwkSet = new JWKSet(rsaKey);
 				return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
 		}
-		
-		
 }

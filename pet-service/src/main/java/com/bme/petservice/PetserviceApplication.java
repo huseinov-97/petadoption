@@ -13,9 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import({ApiDocsConfiguration.class, ResourceServerWebSecurityConfig.class})
 @EnableSwagger2
 public class PetserviceApplication {
-
-		public static void main(String[] args) {
-				SpringApplication.run(PetserviceApplication.class, args);
-		}
-
+    public static void main(String[] args) {
+        SpringApplication.run(PetserviceApplication.class, args);
+    }
 }

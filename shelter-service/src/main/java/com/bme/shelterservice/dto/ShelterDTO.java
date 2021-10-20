@@ -1,8 +1,7 @@
 package com.bme.shelterservice.dto;
 
 
-//import com.bme.petservice.dto.PetDto;
-//import com.bme.petservice.dto.PetDto;
+import com.bme.petservice.dto.PetResource;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,7 +39,7 @@ public class ShelterDTO {
 	
 		private String imageUrl;
 		
-//		@ElementCollection
-//		private List<PetDto> pets;
+		@ElementCollection
+		private List<PetResource> pets;
 		
 }
