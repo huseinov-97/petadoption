@@ -9,8 +9,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @SpringBootApplication
-@Import(ApiDocsConfiguration.class)
-@EnableSwagger2
 public class AuthserverApplication {
 		public static void main(String[] args) {
 				SpringApplication.run(AuthserverApplication.class, args);

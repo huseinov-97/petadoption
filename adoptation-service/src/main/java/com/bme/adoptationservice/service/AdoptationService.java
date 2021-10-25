@@ -54,11 +54,11 @@ public class AdoptationService {
 				
 				AdoptationEntity entity = new AdoptationEntity();
 				
-				
-				dto.setAdoptationDate(date);
-				entity.setPets(dto.getPets().stream().map(p->
-						UUID.fromString(p.getId()))
-						.collect(Collectors.toList()));
+//
+//				dto.setAdoptationDate(date);
+//				entity.setPets(dto.getPets().stream().map(p->
+//						UUID.fromString(p.getId()))
+//						.collect(Collectors.toList()));
 				
 				return null;
 		}

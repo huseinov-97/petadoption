@@ -27,9 +27,9 @@ public class ShelterService {
 		@PostConstruct
 		public void mockData() {
 				Shelter entity = new Shelter();
-				entity.setShelterName("My mock shelter");
-				entity.setPets(Collections.singletonList(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64")));
-				shelterRepo.save(entity);
+//				entity.setShelterName("My mock shelter");
+//				entity.setPets(Collections.singletonList(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64")));
+//				shelterRepo.save(entity);
 		}
 		
 		/**
