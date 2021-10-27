@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @FeignClient(
         name = "pet-service",
-        url = "${services.pet-service-url:localhost:9000}/pets"
+        url = "${services.pet-service-url:localhost:8083}/pets"
 )
 public interface PetServiceIF {
     @GetMapping("/{id}")

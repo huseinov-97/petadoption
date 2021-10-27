@@ -15,11 +15,12 @@
         </processorPath>
         <module name="config-server" />
         <module name="common" />
-        <module name="adoptation-service" />
         <module name="pet-service" />
-        <module name="auth-server" />
+        <module name="adoptation-service" />
         <module name="shelter-service" />
+        <module name="auth-server" />
         <module name="api-gateway" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,6 +32,7 @@
       <module name="pet-service" target="11" />
       <module name="petadoption" target="11" />
       <module name="shelter-service" target="11" />
+      <module name="user-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -41,8 +43,9 @@
       <module name="common" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="pet-service" options="-parameters" />
-      <module name="petadoption" options="-parameters" />
+      <module name="petadoption" options="" />
       <module name="shelter-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

@@ -3,6 +3,7 @@ package com.bme.petservice.controller;
 
 import com.bme.petservice.dto.AddPetResource;
 import com.bme.petservice.dto.PetResource;
+import com.bme.petservice.feignclient.PetServiceIF;
 import com.bme.petservice.mapper.PetMapper;
 import com.bme.petservice.model.Pet;
 import com.bme.petservice.service.PetService;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/pets")
 @RequiredArgsConstructor
-public class PetController {
+public class PetController implements PetServiceIF {
 
     private static final String PATH_ID = "/{id}";
     private final PetService service;

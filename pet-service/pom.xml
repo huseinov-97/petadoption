@@ -17,6 +17,12 @@
             <artifactId>common</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.bme</groupId>
+            <artifactId>shelter-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Every service providing a REST API should use the WEB starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

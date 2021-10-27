@@ -19,12 +19,6 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.bme</groupId>
-            <artifactId>pet-service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- Every service providing a REST API should use the WEB starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
