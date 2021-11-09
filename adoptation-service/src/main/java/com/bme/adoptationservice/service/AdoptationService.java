@@ -1,7 +1,7 @@
 package com.bme.adoptationservice.service;
 
 
-import com.bme.adoptationservice.model.AdoptationDTO;
+import com.bme.adoptationservice.dto.AdoptationResource;
 import com.bme.adoptationservice.model.AdoptationEntity;
 import com.bme.adoptationservice.repo.AdoptationRepository;
 import com.bme.petservice.feignclient.PetServiceIF;
@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import javax.annotation.PostConstruct;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
@@ -20,37 +21,35 @@ public class AdoptationService {
 		
 		
 		private AdoptationRepository repository;
-		private Date date = new Date(String.valueOf(LocalDateTime.now()));
 		private PetServiceIF petService;
 		
 		@PostConstruct
 		public void mock() {
 				AdoptationEntity adoptationEntity = new AdoptationEntity();
-				adoptationEntity.setId(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64"));
 				adoptationEntity.setAdopted(true);
-				adoptationEntity.setAdoptationDate(date);
+				adoptationEntity.setAdoptationDate(Instant.now());
 				repository.save(adoptationEntity);
 		}
 		
-		public Page<AdoptationDTO> findAll(Pageable pageable){
+		public Page<AdoptationResource> findAll(Pageable pageable){
 				return repository.findAll(pageable).map(entity -> {
-						AdoptationDTO dto = new AdoptationDTO();
+						AdoptationResource dto = new AdoptationResource();
 						dto.setPets(entity.getPets().stream()
 						.map(petId -> petService.get(petId).getBody()).collect(Collectors.toList()));
 						return dto;
 				});
 		}
-		public Optional<AdoptationEntity> findById(UUID id){
+		public Optional<AdoptationEntity> findById(Integer id){
 				return repository.findById(id);
 		}
 		
-		public AdoptationEntity create(AdoptationDTO adoptationDTO){
+		public AdoptationEntity create(AdoptationResource adoptationDTO){
 				AdoptationEntity entity = new AdoptationEntity();
 				
 				return  null;
 		}
 		
-		public AdoptationDTO createAdoptation(AdoptationDTO dto){
+		public AdoptationResource createAdoptation(AdoptationResource dto){
 				
 				AdoptationEntity entity = new AdoptationEntity();
 				
