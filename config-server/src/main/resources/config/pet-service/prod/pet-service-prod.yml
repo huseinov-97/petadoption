@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://pet-db:3306/petdb
+    driverClassName: com.mysql.jdbc.Driver
+    username: user
+    password: password
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+server:
+  port: 8080
+petadoption:
+  security:
+    client-secret: 16092ceb-a272-4e02-a286-abc28a3b1b97
+    client-id: pet-service

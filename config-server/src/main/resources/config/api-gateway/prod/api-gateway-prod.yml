@@ -1,0 +1,22 @@
+petadoption:
+  security:
+    auth-server-url: http://localhost:9000/oauth2
+
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  routes:
+    adoptation:
+      path: /adoptation/**
+      url: http://localhost:8080
+    pet:
+      path: /pet/**
+      url: http://localhost:8080
+    shelter:
+      path: /shelter/**
+      url: http://localhost:8080
+    oauth:
+      path: /oauth/**
+      url: http://localhost:9000
+    user:
+      path: /user/**
+      url: http://localhost:8080
