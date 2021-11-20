@@ -21,6 +21,7 @@
             <groupId>com.bme</groupId>
             <artifactId>shelter-service</artifactId>
             <version>${project.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Every service providing a REST API should use the WEB starter -->

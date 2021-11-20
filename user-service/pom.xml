@@ -87,7 +87,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                        <image>user-service</image>
+                        <image>pa-user-service</image>
                     </to>
                 </configuration>
             </plugin>
