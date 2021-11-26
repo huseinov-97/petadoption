@@ -57,17 +57,21 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - DB_URL=jdbc:mysql://pet-db:3306/petdb
-      - DB_USER=root
-      - DB_PASSWORD=test123
+      - SPRING_DATASOURCE_URL=jdbc:mysql://pet-db:3306/petdb
+      - SPRING_DATASOURCE_USERNAME=muser
+      - SPRING_DATASOURCE_PASSWORD=test123
 
   pet-db:
     image: mysql:8.0.27
+    ports:
+    - "3308:3306"
     environment:
       MYSQL_DATABASE: petdb
-      MYSQL_ROOT_PASSWORD: 'test123'
-#    volumes:
-#      - db_data:/var/lib/mysql
+      MYSQL_USER: muser
+      MYSQL_PASSWORD: test123
+      MYSQL_ROOT_PASSWORD: test123
+    volumes:
+      - db_data:/var/lib/mysql
 
-#volumes:
-#  db_data:
+volumes:
+  db_data:
