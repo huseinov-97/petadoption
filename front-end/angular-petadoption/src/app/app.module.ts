@@ -9,11 +9,17 @@ import {PetsService} from "./services/pets.service";
 import {ShelterService} from "./services/shelter.service";
 import {UserService} from "./services/user.service";
 import {AdoptionService} from "./services/adoption.service";
+import { ShelterListComponent } from './components/shelter-list/shelter-list.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { AdoptionListComponent } from './components/adoption-list/adoption-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PetsListComponent
+    PetsListComponent,
+    ShelterListComponent,
+    UserListComponent,
+    AdoptionListComponent
   ],
   imports: [
     BrowserModule,
