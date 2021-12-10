@@ -20,13 +20,13 @@ public class ResourceServerWebSecurityConfig extends WebSecurityConfigurerAdapte
 								"/swagger-ui/",
 								"/webjars/springfox-swagger-ui/**",
 								"/v2/api-docs**",
-								"/swagger**")
-						.permitAll()
-						.anyRequest()
-						.authenticated()
-						.and()
-						.oauth2ResourceServer()
-						.jwt();
+								"/swagger**", "/pet/pets/**", "shelter/shelters/**")
+						.permitAll();
+//						.anyRequest()
+//						.authenticated()
+//						.and()
+//						.oauth2ResourceServer()
+//						.jwt();
 		}
 
 	@Bean

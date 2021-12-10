@@ -1,10 +1,11 @@
 export class Pets {
-  name: string;
+
+  age: number
   description: string;
-  age: string
-  imageUrl: string;
   gender: string;
+  imageUrl: string;
+  name: string;
   weight: number;
-  typeOfPet: string;
-  shelterId: number;
+  type: string;
+  // shelterId:  number;
 }

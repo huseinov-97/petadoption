@@ -20,6 +20,7 @@ export class PetsListComponent implements OnInit {
   listPets() {
     this.service.getPetList().subscribe(
       data=> {
+        alert(JSON.stringify(data));
         this.pets = data;
       }
     )

@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 
 /**
  * In applications, where we want to call another service services we should import that service's api module.
- * This configuration will mae feign find the declared feign clients in those packeges too.
+ * This configuration will map feign find the declared feign clients in those packages too.
  */
 
 @Configuration
