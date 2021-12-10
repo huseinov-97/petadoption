@@ -15,12 +15,12 @@ public class GatewayWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				http
 				.authorizeRequests()
 				.antMatchers("/oauth2/**", "/swagger**", "/swagger-resources/**", "/swagger-ui/**", "/webjars/springfox-swagger-ui/**", "/v2/api-docs**", "/**/v2/api-docs")
-				.permitAll()
-				.anyRequest()
-				.authenticated()
-				.and()
-				.oauth2ResourceServer()
-				.jwt();
+				.permitAll();
+//				.anyRequest()
+//				.authenticated()
+//				.and()
+//				.oauth2ResourceServer()
+//				.jwt();
 		}
 		
 }
