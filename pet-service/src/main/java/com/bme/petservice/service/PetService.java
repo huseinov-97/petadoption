@@ -24,10 +24,12 @@ public class PetService {
     @PostConstruct
     public void mock() {
         Pet petEntity = new Pet();
-        petEntity.setName("Pet 1");
+        petEntity.setId(1);
+        petEntity.setName("Mimi");
         petEntity.setAge(2);
         petEntity.setGender("Male");
-        petEntity.setTypeOfPet("cat");
+        petEntity.setTypeOfPet("Cat");
+        petEntity.setImageUrl("assets/images/pets/KYEJp9vem3QQFGhi25SYx4-1200-80.jpg");
         repository.save(petEntity);
     }
 
