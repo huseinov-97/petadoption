@@ -8,6 +8,7 @@ import com.bme.shelterservice.feign.ShelterServiceIF;
 import com.bme.shelterservice.service.ShelterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +24,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/shelters")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class ShelterController implements ShelterServiceIF {
 
     private static final String PATH_ID = "/{id}";
     private static final String PARAM_ID = "id";
     private final ShelterService service;
 
-    @GetMapping("/list")
+    @GetMapping
     public List<ShelterResource> list() {
         return service.list();
     }
