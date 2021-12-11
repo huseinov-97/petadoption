@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Pets} from "../../common/pets";
-import {PetsService} from "../../services/pets.service";
+import {Component, OnInit} from '@angular/core';
 import {Shelter} from "../../common/shelter";
 import {ShelterService} from "../../services/shelter.service";
 
@@ -13,15 +11,17 @@ export class ShelterListComponent implements OnInit {
 
   shelters: Shelter[];
 
-  constructor(private service: ShelterService) { }
-
-  ngOnInit(): void {
-    this.listPets();
+  constructor(private service: ShelterService) {
   }
 
-  listPets() {
+  ngOnInit(): void {
+    this.listShelters();
+  }
+
+  listShelters() {
     this.service.getShelterList().subscribe(
-      data=> {
+      data => {
+        //alert(JSON.stringify(data));
         this.shelters = data;
       }
     )

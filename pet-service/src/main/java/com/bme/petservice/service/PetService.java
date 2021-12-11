@@ -31,7 +31,27 @@ public class PetService {
         petEntity.setTypeOfPet("Cat");
         petEntity.setImageUrl("assets/images/pets/KYEJp9vem3QQFGhi25SYx4-1200-80.jpg");
         repository.save(petEntity);
+
+        Pet petEntity2 = new Pet();
+        petEntity2.setId(2);
+        petEntity2.setName("Max");
+        petEntity2.setAge(3);
+        petEntity2.setGender("Female");
+        petEntity2.setTypeOfPet("Dog");
+        petEntity2.setImageUrl("assets/images/pets/dog.png");
+        repository.save(petEntity2);
+
+        Pet petEntity3 = new Pet();
+        petEntity3.setId(3);
+        petEntity3.setName("Korp");
+        petEntity3.setAge(3);
+        petEntity3.setGender("Female");
+        petEntity3.setTypeOfPet("Cat");
+        petEntity3.setImageUrl("assets/images/pets/cat2.png");
+        petEntity3.setWeight(3);
+        repository.save(petEntity3);
     }
+
 
     public List<Pet> list() {
         return repository.findAll();

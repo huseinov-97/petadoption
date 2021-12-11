@@ -10,9 +10,10 @@ export class PetsService {
 
   private petUrl = 'http://localhost:8080/pet/pets'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getPetList(): Observable<Pets[]>{
+  getPetList(): Observable<Pets[]> {
     return this.httpClient.get<Pets[]>(this.petUrl);
   }
 }

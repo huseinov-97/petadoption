@@ -4,7 +4,7 @@ import {Pets} from "../../common/pets";
 
 @Component({
   selector: 'app-pets-list',
-  templateUrl: './pets-list-table.component.html',
+  templateUrl: './pets-list-grid.component.html',
   styleUrls: ['./pets-list.component.css']
 })
 export class PetsListComponent implements OnInit {

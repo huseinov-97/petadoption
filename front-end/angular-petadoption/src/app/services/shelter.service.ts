@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Shelter} from "../common/shelter";
 
 @Injectable({
@@ -14,14 +14,7 @@ export class ShelterService {
   }
 
   getShelterList(): Observable<Shelter[]> {
-    return this.httpClient.get<GetResponse>(this.shelterUrl).pipe(
-      map(response => response._embedded.shelters)
-    );
+    return this.httpClient.get<Shelter[]>(this.shelterUrl);
   }
 }
 
-interface GetResponse {
-  _embedded: {
-    shelters: Shelter[];
-  }
-}
