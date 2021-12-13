@@ -1,5 +1,6 @@
 export class Pets {
 
+  id: string;
   age: number
   description: string;
   gender: string;

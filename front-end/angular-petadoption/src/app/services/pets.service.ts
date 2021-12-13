@@ -8,12 +8,18 @@ import {Pets} from "../common/pets";
 })
 export class PetsService {
 
-  private petUrl = 'http://localhost:8080/pet/pets'
+  private petsUrl = 'http://localhost:8080/pet/pets'
 
   constructor(private httpClient: HttpClient) {
   }
 
   getPetList(): Observable<Pets[]> {
-    return this.httpClient.get<Pets[]>(this.petUrl);
+    return this.httpClient.get<Pets[]>(this.petsUrl);
+  }
+
+  getPet(thePetid: number): Observable<Pets>{
+    const petUrl = `${this.petsUrl}/${thePetid}`;
+
+    return this.httpClient.get<Pets>(petUrl);
   }
 }

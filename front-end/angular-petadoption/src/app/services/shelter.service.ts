@@ -16,5 +16,11 @@ export class ShelterService {
   getShelterList(): Observable<Shelter[]> {
     return this.httpClient.get<Shelter[]>(this.shelterUrl);
   }
+
+  getShelter(shelterId: number): Observable<Shelter> {
+    const shelterUrl = `${this.shelterUrl}/${shelterId}`;
+
+    return this.httpClient.get<Shelter>(shelterUrl);
+  }
 }
 

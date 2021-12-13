@@ -34,10 +34,11 @@ public class ShelterServiceImpl implements ShelterService {
         shelter.setShelterName("Rescuers 1");
         shelter.setOwnerName("Mahir Huseynov");
         shelter.setAddress("Pecs");
-        shelter.setDescription("Cat rescuers");
+        shelter.setDescription("Cat rescuers: we are new in the neighborhood!!!");
         shelter.setEmail("mhuseinov7@gmail.com");
         shelter.setMaxSize(100);
         shelter.setPhoneNumber("+36203333333");
+        shelter.setImageUrl("assets/images/shelters/2.jpeg");
         repository.save(shelter);
 
         Shelter shelter1 = new Shelter();
@@ -49,6 +50,7 @@ public class ShelterServiceImpl implements ShelterService {
         shelter1.setEmail("mhuseinov7@gmail.com");
         shelter1.setMaxSize(100);
         shelter1.setPhoneNumber("+36203333333");
+        shelter1.setImageUrl("assets/images/shelters/1.jpg");
         repository.save(shelter1);
 
         Shelter shelter2 = new Shelter();
@@ -60,6 +62,7 @@ public class ShelterServiceImpl implements ShelterService {
         shelter2.setEmail("mhuseinov7@gmail.com");
         shelter2.setMaxSize(200);
         shelter2.setPhoneNumber("+36203333333");
+        shelter2.setImageUrl("assets/images/shelters/123.jpg");
         repository.save(shelter2);
     }
 

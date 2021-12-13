@@ -12,6 +12,8 @@ import {AdoptionService} from "./services/adoption.service";
 import {ShelterListComponent} from './components/shelter-list/shelter-list.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {AdoptionListComponent} from './components/adoption-list/adoption-list.component';
+import { PetDetailsComponent } from './components/pet-details/pet-details.component';
+import { ShelterDetailsComponent } from './components/shelter-details/shelter-details.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {AdoptionListComponent} from './components/adoption-list/adoption-list.co
     PetsListComponent,
     ShelterListComponent,
     UserListComponent,
-    AdoptionListComponent
+    AdoptionListComponent,
+    PetDetailsComponent,
+    ShelterDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 export class Shelter {
+  id: number;
   address: string;
   description: string;
   email: string;
@@ -6,4 +7,5 @@ export class Shelter {
   ownerName: string;
   phoneNumber: string;
   shelterName: string;
+  imageUrl: string;
 }
