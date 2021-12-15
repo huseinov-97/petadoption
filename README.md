@@ -43,3 +43,21 @@ This is the Api Gateway service. It will store the locations of services. And ea
 <h2>Frontend</h2>
 
 Built in Angular it will contain some pages for handling some Authentication requests.
+
+# Building and running the Dockerized version
+Pre-requisitis:
+- Have Docker installed and running
+- Have Docker Compose installed (usually comes with the Docker Desktop)
+
+Building the images:
+- First build the whoel project, byt giving out the following maven command in the parent `mvn clean install`
+- Run the `jib:dockerBuild` maven goal for each *-core submodules
+
+(NOTE: if the code changes in a submodule, you'll first have to rebuild it before running `jib:dockerBuild` again!
+Otherwise your changes won't be applied, as jib will simply put the old jar in the image.)
+
+Running the application:
+- After building all the images, simply give the following command in the root directory: `docker-compose up -d`
+- If you want to uninstall it, run `docker-compose down`
+
+
