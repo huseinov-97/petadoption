@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:.
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+server:
+  port: 8080
+
+petadoption:
+  security:
+    client-secret: 65584896-10bc-4965-9e2f-824765977736
+    client-id: shelter-service

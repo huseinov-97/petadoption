@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.UUID;
 
 
-public interface ShelterRepo extends JpaRepository<Shelter, UUID> {
+public interface ShelterRepo extends JpaRepository<Shelter, Integer> {
 
 }

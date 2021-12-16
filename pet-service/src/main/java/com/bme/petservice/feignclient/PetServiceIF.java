@@ -1,7 +1,7 @@
 package com.bme.petservice.feignclient;
 
 
-import com.bme.petservice.dto.PetDto;
+import com.bme.petservice.dto.PetResource;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +11,10 @@ import java.util.UUID;
 
 
 @FeignClient(
-		name = "pet-service",
-		url = "${services.pet-service-url:localhost:9000}/pets"
+        name = "pet-service",
+        url = "${services.pet-service-url:localhost:8083}/pets"
 )
 public interface PetServiceIF {
-		@GetMapping("/{id}")
-		ResponseEntity<PetDto> findOnePet(@PathVariable UUID id);
+    @GetMapping("/{id}")
+    ResponseEntity<PetResource> get(@PathVariable Integer id);
 }

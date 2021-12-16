@@ -1,0 +1,27 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div *ngFor="let tempShelters of shelters" class="col-md-5">
+          <div class="product-box">
+            <a routerLink="/shelters/{{tempShelters.id}}">
+            <div [ngStyle]="{'background-image': 'url(' + tempShelters.imageUrl + ')'}" class="bgimg"></div>
+            </a>
+<!--            <img src="{{ tempShelters.imageUrl }}" class="">-->
+            <a routerLink="/shelters/{{tempShelters.id}}">
+            <h1>Shelter name: {{ tempShelters.shelterName }}</h1>
+            </a>
+            <h2> Shelter' owner name: {{ tempShelters.ownerName }}</h2>
+            <h2>Address: {{ tempShelters.address }}</h2>
+            <h2>Description: {{ tempShelters.description }}</h2>
+            <h2>Email: {{ tempShelters.email }}</h2>
+            <h2>Max size: {{ tempShelters.maxSize }}</h2>
+            <h2>Contact number: {{ tempShelters.phoneNumber }}</h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

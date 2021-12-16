@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 
-public interface AdoptationRepository extends JpaRepository<AdoptationEntity, UUID> {
+public interface AdoptationRepository extends JpaRepository<AdoptationEntity, Integer> {
 
 }

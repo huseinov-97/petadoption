@@ -1,1 +1,12 @@
 # Settings for the prod profile served by Config server, ALL applications receive
+
+petadoption:
+  security:
+    auth-server-url: http://localhost:9000/oauth2
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth-server:9000/oauth2/jwks

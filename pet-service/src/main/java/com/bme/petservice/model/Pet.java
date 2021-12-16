@@ -1,35 +1,33 @@
 package com.bme.petservice.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
-
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
+@Data
+@FieldNameConstants
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Pet {
-		
-		@Id
-		private UUID id = UUID.randomUUID();
-		
-		@Column(nullable = false)
-		private String name;
-		
-		private String description;
-		
-		private int age;
-		
-		private String imageUrl;
-		
-		@Column(nullable = false)
-		private String gender;
-		
-		private double weight;
-		
-		private String typeOfPet;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private String description;
+    private Integer age;
+    private String imageUrl;
+    private String gender;
+    private Integer weight;
+    private String typeOfPet;
+    public Integer shelterId;
 }

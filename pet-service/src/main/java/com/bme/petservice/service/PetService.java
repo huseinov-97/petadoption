@@ -1,61 +1,73 @@
 package com.bme.petservice.service;
 
 
-import com.bme.petservice.dto.PetRegistrationDTO;
+import com.bme.petservice.dto.AddPetResource;
+import com.bme.petservice.mapper.PetMapper;
 import com.bme.petservice.model.Pet;
 import com.bme.petservice.repository.PetRepository;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.bme.shelterservice.feign.ShelterServiceIF;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
 @Service
-@AllArgsConstructor
-@Slf4j
+@RequiredArgsConstructor
 public class PetService {
-		
-		private PetRepository repository;
-		
-		@PostConstruct
-		public void mock() {
-				Pet petEntity = new Pet();
-				petEntity.setName("Pet 1");
-				petEntity.setId(UUID.fromString("3a142008-cffc-437e-bdeb-79a275f43c64"));
-				petEntity.setAge(2);
-				petEntity.setGender("Male");
-				petEntity.setTypeOfPet("cat");
-				repository.save(petEntity);
-		}
-		
-		public Page<Pet> findAll(Pageable pageable) {
-				return repository.findAll(pageable);
-		}
-		
-		public Optional<Pet> findOne(UUID id) {
-				return repository.findById(id);
-		}
-		
-		public Pet create(PetRegistrationDTO dto) {
-				log.debug("Creating new Pet sample {}", dto);
-				
-				Pet entity = new Pet();
-				entity.setName(dto.getName());
-				entity.setTypeOfPet(dto.getType());
-				entity.setGender(dto.getGender());
-				entity.setAge(dto.getAge());
-				return repository.save(entity);
-		}
-		
-		public void deleteById(UUID id){
-				repository.deleteById(id);
-		}
-		
-		
-		
+    private final PetRepository repository;
+    private PetMapper mapper;
+    private ShelterServiceIF serviceIF;
+
+    @PostConstruct
+    public void mock() {
+        Pet petEntity = new Pet();
+        petEntity.setId(1);
+        petEntity.setName("Mimi");
+        petEntity.setAge(2);
+        petEntity.setGender("Male");
+        petEntity.setTypeOfPet("Cat");
+        petEntity.setImageUrl("assets/images/pets/KYEJp9vem3QQFGhi25SYx4-1200-80.jpg");
+        repository.save(petEntity);
+
+        Pet petEntity2 = new Pet();
+        petEntity2.setId(2);
+        petEntity2.setName("Max");
+        petEntity2.setAge(3);
+        petEntity2.setGender("Female");
+        petEntity2.setTypeOfPet("Dog");
+        petEntity2.setImageUrl("assets/images/pets/dog.png");
+        repository.save(petEntity2);
+
+        Pet petEntity3 = new Pet();
+        petEntity3.setId(3);
+        petEntity3.setName("Korp");
+        petEntity3.setAge(3);
+        petEntity3.setGender("Female");
+        petEntity3.setTypeOfPet("Cat");
+        petEntity3.setImageUrl("assets/images/pets/cat2.png");
+        petEntity3.setWeight(3);
+        repository.save(petEntity3);
+    }
+
+
+    public List<Pet> list() {
+        return repository.findAll();
+    }
+
+    public Optional<Pet> get(Integer id) {
+        return repository.findById(id);
+    }
+
+    public Pet create(AddPetResource addPetResource) {
+        Pet entity = mapper.from(addPetResource);
+        entity.setShelterId(serviceIF.get(addPetResource.getShelterResource().getId()).getId());
+        return repository.save(entity);
+    }
+
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }

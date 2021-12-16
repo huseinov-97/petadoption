@@ -11,5 +11,13 @@ zuul:
       path: /shelter/**
       url: http://localhost:8084
     oauth:
-      path: /oauth2/**
-      url: http://localhost:9000/oauth2
+      path: /oauth/**
+      url: http://localhost:9000
+    user:
+      path: /user/**
+      url: http://localhost:8085
+
+petadoption:
+  security:
+    client-secret: 546c5e7b-bd66-4df3-a601-8a31a4bee482
+    client-id: api-gateway

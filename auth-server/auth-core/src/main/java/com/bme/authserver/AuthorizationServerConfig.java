@@ -8,8 +8,8 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import io.swagger.models.HttpMethod;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@EnableWebSecurity
+@Configuration
 public class AuthorizationServerConfig {
 		
 		/**
@@ -85,6 +85,7 @@ public class AuthorizationServerConfig {
 						.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 						.redirectUri("http://localhost:4200/*")
 						.redirectUri("http://localhost:8080/swagger-ui/oauth2-redirect.html")
+						.redirectUri("http://127.0.0.1:8080/swagger-ui/oauth2-redirect.html")
 						.build();
 				
 				// API-Gateway
@@ -118,7 +119,14 @@ public class AuthorizationServerConfig {
 						.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
 						.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
 						.build();
-				
+
+			// Shelter service
+			RegisteredClient userService = RegisteredClient.withId("02032352-50dd-4c5f-92c8-2b53fb2b764b")
+					.clientId("user-service")
+					.clientSecret("f3c2557d-ab7c-4b9f-a287-9e5b9b5eb599")
+					.clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
+					.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+					.build();
 				
 				
 				return new InMemoryRegisteredClientRepository(
@@ -126,7 +134,8 @@ public class AuthorizationServerConfig {
 						apiGateway,
 						adoptationService,
 						petService,
-						shelterService
+						shelterService,
+						userService
 				);
 		}
 		
@@ -136,6 +145,4 @@ public class AuthorizationServerConfig {
 				JWKSet jwkSet = new JWKSet(rsaKey);
 				return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
 		}
-		
-		
 }

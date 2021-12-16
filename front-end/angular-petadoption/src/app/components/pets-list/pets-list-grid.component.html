@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div *ngFor="let tempPets of pets" class="col-md-5">
+          <div class="product-box">
+            <div [ngStyle]="{'background-image': 'url(' + tempPets.imageUrl + ')'}" class="bgimg"></div>
+<!--            <img src="{{ tempPets.imageUrl }}" class="">-->
+            <a routerLink="/pets/{{tempPets.id}}">
+            <h1>Name: {{ tempPets.name }}</h1>
+            </a>
+            <h2>ID: {{tempPets.id}}</h2>
+            <h2>  {{ tempPets.type }}</h2>
+            <h2>Gender: {{ tempPets.gender }}</h2>
+            <h2>Weight: {{ tempPets.weight }}</h2>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
