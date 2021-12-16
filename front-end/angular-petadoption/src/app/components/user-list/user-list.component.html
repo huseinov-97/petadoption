@@ -1,0 +1,18 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div *ngFor="let tempUsers of users" class="col-md-5">
+          <div class="product-box">
+            <h1>User name: {{ tempUsers.userName }}</h1>
+            <h2> First name: {{ tempUsers.firstName }}</h2>
+            <h2>Last name: {{ tempUsers.lastName }}</h2>
+            <h2>Email: {{ tempUsers.email }}</h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

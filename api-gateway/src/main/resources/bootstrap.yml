@@ -2,6 +2,7 @@
 spring:
   profiles:
     active: local-dev # Local-dev is the default profile that we override in the given environment from the environment variable
+    #active: prod
   application:
     name: api-gateway
   cloud:

@@ -1,6 +1,0 @@
-# For the tests we dont use the config server, so we define all properties here
-spring:
-  profiles:
-    active: test
-  application:
-    name: auth-server

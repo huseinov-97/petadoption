@@ -1,63 +1,43 @@
 package com.bme.shelterservice.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 
 @Entity
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Shelter {
-		
+
 		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column
-		private UUID id;
-		
-		@Column
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "id_shelter")
+		private Integer id;
 		private String shelterName;
-		
-		@Column
 		private String ownerName;
-		
-		@Column
 		private String address;
-		
-		@Column
 		private String description;
-		
-		@Column
 		private String phoneNumber;
-		
-		@Column
 		private String email;
-		
-		@Column
-		private String postalCode;
-		
-		@Column
-		private int maxSize;
-		
-		@Column
-		@UpdateTimestamp
-		private Date lastUpdated;
-		
-		@Column
+		private Integer maxSize;
+		private Instant updateDate;
+		private Instant createDate;
 		private String imageUrl;
-		
-		/**
-		 * ID of the pets of the shelter.
-		 */
+
 		@ElementCollection
-		private List<UUID> pets;
+		private List<Integer> pets;
 		
 		
 		

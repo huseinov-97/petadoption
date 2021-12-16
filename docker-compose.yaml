@@ -1,0 +1,84 @@
+version: '3.9'
+services:
+  config-server:
+    image: pa-config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod, native
+
+  api-gateway:
+    image: pa-api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+
+  auth-server:
+    ports:
+      - "9000:9000"
+    image: pa-auth-server
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+
+  adoptation-service:
+    image: pa-adoptation-service
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+
+  shelter-service:
+    image: pa-shelter-service
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+
+  user-service:
+    image: pa-user-service
+    depends_on:
+      - config-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+
+  pet-service:
+    image: pa-pet-service
+    depends_on:
+      - config-server
+      - pet-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+      - DB_URL=jdbc:mysql://pet-db:3306/petdb
+      - DB_USER=root
+      - DB_PASSWORD=testpass
+      - SPRING_DATASOURCE_URL=jdbc:mysql://pet-db:3306/petdb
+      - SPRING_DATASOURCE_USERNAME=muser
+      - SPRING_DATASOURCE_PASSWORD=test123
+
+  pet-db:
+    image: mysql:8.0.27
+    environment:
+      MYSQL_ROOT_PASSWORD: testpass
+      MYSQL_USER: petdb
+      MYSQL_PASSWORD: testpass
+    healthcheck:
+      test: "mysql --user=testuser --password=testpass --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 10s
+      retries: 10
+    ports:
+    - "3308:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

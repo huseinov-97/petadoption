@@ -1,12 +1,17 @@
 
-spring:
-  datasource:
-    url:
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
+#spring:
+#  datasource:
+#    url:
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: password
 
 
 
 server:
   port: 9000
+
+petadoption:
+  security:
+    client-secret: ca8831eb-e504-46f1-a514-8be84ba892ed
+    client-id: petadoption-frontend

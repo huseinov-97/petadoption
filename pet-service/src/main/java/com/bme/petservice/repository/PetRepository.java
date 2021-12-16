@@ -3,9 +3,10 @@ package com.bme.petservice.repository;
 
 import com.bme.petservice.model.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-
-public interface PetRepository extends JpaRepository<Pet, UUID> {
+@Repository
+public interface PetRepository extends JpaRepository<Pet, Integer> {
 }
