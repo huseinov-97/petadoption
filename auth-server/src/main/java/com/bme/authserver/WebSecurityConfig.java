@@ -26,10 +26,12 @@ public class WebSecurityConfig{
                         "/swagger-ui/",
                         "/webjars/springfox-swagger-ui/**",
                         "/v2/api-docs**",
-                        "/swagger**", "/pet/pets/**", "shelter/shelters/**")
-                .permitAll();
-//                .and()
-//                .formLogin(withDefaults());
+                        "/swagger**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin(withDefaults());
         return http.build();
     }
 
@@ -38,15 +40,15 @@ public class WebSecurityConfig{
 //        return new BCryptPasswordEncoder();
 //    }
 
-//    @Bean
-//    public UserDetailsService users() {
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(user);
-//    }
+    @Bean
+    public UserDetailsService users() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("password")
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(user);
+    }
 
 }
 
