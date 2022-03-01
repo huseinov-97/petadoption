@@ -42,4 +42,4 @@ This is the Api Gateway service. It will store the locations of services. And ea
 
 <h2>Frontend</h2>
 
-Built in Angular it will contain some pages for handling some Authentication requests.
+Built in Angular and it contains some pages for handling some Authentication requests.
